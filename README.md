@@ -1,32 +1,13 @@
-# _Sample project_
+# Controlling drone with hand gestures using MPU6050 and ESP32-S3
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
-
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+This project aims to control a Tello drone utilizing only hand gestures (up, down, left and right) while holding an MPU6050. The MPU6050 outputs accelerometer and gyroscope data which get fed into a machine learning algorithm that outputs its classification. We use this classification as well as the acceleration data to send a command to the Tello drone in order for it to move.
 
 
 
 ## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
 
-## Example folder contents
+Download the code and build it. Upload it to your ESP32 that has a MPU6050 attached to it with SDA pin at 0 and SLA pin at 1 (You can change these in the main.c code). In addition add 3 buttons, one button on pin 4 that will activate the up, down, left and right actions, one button on pin 5 that will activate the forward, backward, counter clockwise and clockwise actions, and one on pin 6 that will land the drone. Keep the ESP32 attached to your computer and change the autocollection.py port to match your device. Then connect to your Tello's wifi and run the autocollection.py and use up, down, left and right as seen in the video to do commands. Press the button to activate the collection and it will collect for 3 seconds and after classification will send the signal to the drone. 
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+## Sample video
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
-
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+https://www.youtube.com/watch?v=AQQGD5aCq7M
